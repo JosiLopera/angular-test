@@ -7,11 +7,18 @@
 	<script src="./app/app.js"></script>
 	<script src="./app/controllers/password.controller.js"></script>
 	<script src="./app/filters/upperCase.filter.js"></script>
+	<script src="./app/directives/stateFull.directive.js"></script>
 	<style>
 	
 		.box{
-			margin: 50px;
+			margin: 50px auto;
+			width: 970px;
 		}
+
+		button.test-value:after{
+			content: ' Active';
+		}
+	
 
 	</style>
 </head>
@@ -21,6 +28,10 @@
 	</div>
 	<div class="box" >
 		<input type="text" ng-model="message"> {{message | upperCase}}
+	</div>
+
+	<div class="box">
+		<button ng-state-full="test-value">Click Me</button>
 	</div>
 </body>
 </html>
