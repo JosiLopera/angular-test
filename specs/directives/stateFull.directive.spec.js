@@ -7,7 +7,7 @@
 describe('StateFull test', function() {
 
 	var stateFullDirective,
-		simpleHtml = '<div ng-state-full></div>',
+		simpleHtml = '<button ng-state-full="test-value"></button>',
 		element;
 		
 	this.$rootScope;
@@ -15,11 +15,8 @@ describe('StateFull test', function() {
 	beforeEach(function(){
 		angular.mock.module('angular_test');
 
-		angular.mock.inject(function ($filter, $rootScope){
-	
+		angular.mock.inject(function ($compile, $rootScope){
 			element = $compile(simpleHtml)($rootScope);
-			this.$rootScope = $rootScope;
-
 		});
 	});
 
@@ -27,7 +24,7 @@ describe('StateFull test', function() {
 
 		it('Should add a class if missing otherwise add it', function() {
 			expect(element.hasClass('test-value')).toBeFalsy();
-			expect(false).toBeTruthy();
+			element.triggerHandler('click');
 			expect(element.hasClass('test-value')).toBeTruthy();
 		});
 
